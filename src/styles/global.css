@@ -2898,19 +2898,38 @@ p {
 .site-footer {
   background: var(--footer-bg);
   color: var(--fg-on-dark);
-  padding-block: var(--space-7) var(--space-5);
+  padding-block: clamp(2rem, 3vw, 2.5rem) var(--space-5);
   border-top: 1px solid var(--footer-border);
 }
 .footer-grid {
   display: grid;
-  gap: var(--space-7);
+  gap: clamp(var(--space-6), 3.25vw, var(--space-7));
+  align-items: start;
 }
 @media (min-width: 880px) {
   .footer-grid {
-    grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-col--brand {
+    padding-right: 0;
   }
 }
-.footer-col { display: grid; gap: var(--space-3); align-content: start; }
+
+@media (min-width: 1280px) {
+  .footer-col--brand .brand__name {
+    white-space: nowrap;
+  }
+}
+.footer-col {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  min-width: 0;
+}
+.footer-col--brand {
+  padding-right: clamp(0rem, 2vw, var(--space-5));
+}
 .footer-col h4 {
   font-family: 'Public Sans Variable', sans-serif;
   font-size: var(--fs-micro);
@@ -2926,6 +2945,11 @@ p {
   transition: color var(--dur-micro) var(--ease-out);
 }
 .footer-col a:hover { color: #FFFFFF; }
+
+.footer-col--brand h4 {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--footer-border);
+}
 
 .footer-newsletter {
   display: flex;
@@ -2950,15 +2974,40 @@ p {
 .site-footer .btn--primary:hover { background: var(--primary-hover); }
 
 .footer-bottom {
-  margin-top: var(--space-8);
-  padding-top: var(--space-6);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--hairline-on-dark);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
   justify-content: space-between;
+  align-items: center;
   color: var(--slate-400);
   font-size: var(--fs-small);
+}
+
+@media (min-width: 560px) and (max-width: 879px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+    row-gap: var(--space-7);
+  }
+
+  .footer-col--brand {
+    grid-column: 1 / -1;
+    max-width: 42rem;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 559px) {
+  .footer-col--brand {
+    padding-right: 0;
+  }
+
+  .footer-bottom {
+    margin-top: var(--space-6);
+  }
 }
 
 /* Scroll reveal helper */

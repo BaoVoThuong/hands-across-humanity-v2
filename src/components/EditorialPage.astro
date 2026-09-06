@@ -10,7 +10,7 @@ interface Props {
   title: string;
   description: string;
   activePage: string;
-  eyebrow: string;
+  eyebrow?: string;
   lead: string;
   image: ImageMetadata;
   imageAlt: string;
@@ -22,7 +22,7 @@ interface Props {
 }
 
 const {
-  title, description, activePage, eyebrow, lead,
+  title, description, activePage, lead,
   image, imageAlt, caption,
   heroSignals = [
     {
@@ -46,6 +46,7 @@ const {
    the same link with the same words in two places. Both ends now come from
    the reading order in one place, and cannot disagree with the nav. */
 const here = pageOf(activePage);
+const eyebrow = Astro.props.eyebrow ?? here?.name ?? '';
 const next = nextPage(activePage);
 const previous = previousPage(activePage);
 

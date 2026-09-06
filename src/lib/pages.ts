@@ -28,11 +28,23 @@ export interface SitePage {
   documentTitle: string;
 }
 
-/** Reading order. The header, footer and chain all follow this sequence. */
+/**
+ * Reading order, and one grammatical shape for all five.
+ *
+ * The set used to mix three forms — a prepositional phrase (About Us), three
+ * bare nouns, and one clause with a subject and verb (What We Do) — so the
+ * header lost its rhythm at exactly those two items. Single nouns throughout.
+ * "Work" is the site's own word for what it does, not a label imposed on it:
+ * the pages already say "three habits shape the work" and "what the work has
+ * looked like".
+ *
+ * The href stays /what-we-do/. Renaming a URL breaks every link anyone has
+ * already shared, and that is a separate decision from what the nav calls it.
+ */
 export const PAGES: SitePage[] = [
   {
     key: 'about-us',
-    name: 'About Us',
+    name: 'About',
     href: '/about-us/',
     cta: 'Back to the overview',
     documentTitle: `${SITE_NAME} | Community Donation Network`,
@@ -46,10 +58,10 @@ export const PAGES: SitePage[] = [
   },
   {
     key: 'what-we-do',
-    name: 'What We Do',
+    name: 'Work',
     href: '/what-we-do/',
-    cta: 'See what we do',
-    documentTitle: `What We Do | ${SITE_NAME}`,
+    cta: 'See the work',
+    documentTitle: `Work | ${SITE_NAME}`,
   },
   {
     key: 'events',
@@ -62,7 +74,7 @@ export const PAGES: SitePage[] = [
     key: 'vision',
     name: 'Vision',
     href: '/vision/',
-    cta: 'Read our vision',
+    cta: 'Read the vision',
     documentTitle: `Vision | ${SITE_NAME}`,
   },
 ];
