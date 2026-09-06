@@ -1956,6 +1956,9 @@ p {
   background: rgba(255, 255, 255, 0.8);
 }
 
+/* --cta is Deep Indigo, which on the navy scrim measured 1.06:1 — darker than
+   the inactive dots at 3.69:1, so the current slide was the hardest one to
+   pick out. The gold accent reads 9.78:1 against the same scrim. */
 .hero-carousel__dot.is-active {
   width: 20px;
   border-radius: 4px;
@@ -5860,11 +5863,12 @@ main > .hero-fold-group > section.impact-band { border-top-color: var(--band-dee
 
 /* The dots are 8px because that is what reads well over a photograph. Padding
    was the wrong way to give them a finger-sized target: content-box padding
-   inflated each dot to 47x35 and blew the pill up to 234px across the image.
-   A transparent pseudo-element extends the target without touching layout.
-   Vertical only — the 6px gap means sideways extension would overlap the
-   neighbour and steal its clicks. The 42px arrows carry the full-size target
-   for the same action, and the carousel advances on its own besides. */
+   inflated each dot to 47x35 and the indicator pill to 234px, so a control
+   meant to sit quietly in a corner covered a third of the image. A transparent
+   pseudo-element extends the target without touching layout. Vertical only —
+   the dots sit 6px apart, so extending sideways would overlap the neighbour
+   and steal its clicks. The 42px arrows carry a full-size target for the same
+   action, and the carousel advances on its own besides. */
 .hero-carousel__dot,
 .about-network-carousel__dot {
   position: relative;
