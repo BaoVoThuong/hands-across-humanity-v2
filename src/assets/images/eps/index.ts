@@ -19,6 +19,20 @@ import field04 from './eps-field-04.jpg';
 import field05 from './eps-field-05.jpg';
 import field06 from './eps-field-06.jpg';
 import field07 from './eps-field-07.jpg';
+import communityOutdoorPartners from './eps-community-outdoor-partners.webp';
+import communityRecognition from './eps-community-recognition.webp';
+import communityRoundtable from './eps-community-roundtable.webp';
+import lionsClubGathering from './eps-lions-club-gathering.webp';
+import reliefShipmentLoading from './eps-relief-shipment-loading.webp';
+import reliefShipmentRamp from './eps-relief-shipment-ramp.webp';
+import reliefPallets from './eps-relief-pallets.webp';
+import communityMeal from './eps-community-meal.webp';
+import partnerPortrait from './eps-partner-portrait.webp';
+import immunizationPartners from './eps-immunization-partners.webp';
+import communityMealTwo from './eps-community-meal-two.webp';
+import communityRecognitionEvent from './eps-community-recognition-event.webp';
+import heritageMonthEvent from './eps-heritage-month-event.webp';
+import communityTeam from './eps-community-team.webp';
 
 export {
   communityDistribution,
@@ -42,4 +56,18 @@ export {
   field05,
   field06,
   field07,
+  communityOutdoorPartners,
+  communityRecognition,
+  communityRoundtable,
+  lionsClubGathering,
+  reliefShipmentLoading,
+  reliefShipmentRamp,
+  reliefPallets,
+  communityMeal,
+  partnerPortrait,
+  immunizationPartners,
+  communityMealTwo,
+  communityRecognitionEvent,
+  heritageMonthEvent,
+  communityTeam,
 };

@@ -6,49 +6,67 @@
 :root {
   color-scheme: light;
 
-  /* Color Palette — High contrast, professional, warm & commercial */
+  /* Palette — white page, orange accent.
+   Every ground and every ink used to carry an orange tint: the page itself was
+   #FFFCF9, body copy was cocoa #3D2A22, and the footer was a clay #A55E42, so
+   the whole site read as warm wash rather than white. Grounds are now white
+   and neutral greys, ink is neutral, and orange is spent only where it means
+   something — links, buttons, the impact band, the wordmark. */
   --paper: #FFFFFF;
   --surface: #FFFFFF;
-  --surface-alt: #FBF6F0;
-  --surface-hover: #F7EDE4;
+  --surface-alt: #F7F7F6;
+  --surface-hover: #EFEFEE;
 
-  /* Closing transitions — a warm paper bridge into the footer */
+  /* Closing transitions — the neutral band that bridges into the footer */
   --transition-warm: var(--surface-alt);
-  --transition-ink-muted: #B23C0B;
-  --transition-border: #E0C4A6;
+  --transition-ink-muted: #C2410C;
+  --transition-border: #E7E7E5;
   --transition-padding: clamp(2rem, 4vh, 3rem);
   
-  --slate-900: #2B1A10;
-  --slate-800: #3D2517;
+  --slate-900: #1F2124;
+  --slate-800: #33363A;
 
-  /* The footer is near-black by design; a mid-page band that borrows that same
-     ink reads as a hole in the page. These two carry the dark moments instead:
-     a burnt sienna that is unmistakably in the orange family, and a warm sand
-     mat behind photographs where near-black used to cut a hard edge. */
-  --band-deep: #7A2E12;        /* mid-page dark band */
-  --band-deep-edge: #5E2310;
-  --photo-mat: #EEDBC8;        /* ground behind carousel + card imagery */
-  --slate-700: #4F3423;
-  --slate-600: #6B4A34;
-  --slate-500: #7D5A42;
-  --slate-100: #FBF6F0;
+  /* The two blocks that break the white page. The band is the one place solid
+     orange covers real estate; the footer is neutral near-black so the orange
+     stays the only colour that carries meaning. The photo mat is a plain grey
+     because a tinted mat pushed its colour into every photograph on it. */
+  --band-deep: #C2410C;        /* the solid orange band */
+  --band-deep-edge: #9A3412;
+  --photo-mat: #F2F1F0;        /* ground behind carousel + card imagery */
+  --footer-bg: #1F2124;        /* neutral near-black */
+  --footer-surface: #2A2D31;
+  --footer-border: #3D4147;
+  --footer-heading: #FFFFFF;
+  --slate-700: #4A4E53;
+  --slate-600: #5C6066;
+  --slate-500: #71757B;
+  --slate-100: #F5F5F4;
 
   /* Ink & Typography Colors */
-  --fg: #3D2517;
-  --fg-muted: #6B4A34;
-  --fg-light: #7D5A42;      /* darkened for the warm sand band: 5.12:1 there */
-  --fg-on-dark: #FDF8F4;
-  --fg-muted-on-dark: #D6BCA6;
+  --fg: #1F2124;
+  --fg-muted: #56595E;
+  --fg-light: #6C7075;
+  --fg-on-dark: #FFFFFF;
+  --fg-muted-on-dark: #C6C9CD;
+  --brand-accent-on-dark: #FF9A62;
+
+  /* The footer is neutral near-black and the impact band is solid orange, so
+     one "on dark" pair cannot serve both: the footer's #C6C9CD measures
+     3.12:1 on the band. These are the band's own, at 5.18:1 and 4.88:1. */
+  --fg-on-band: #FFFFFF;
+  --fg-muted-on-band: #FFF7ED;
 
   /* Brand Colors */
-  --primary: #B23C0B;          /* Signal Blue */
-  --primary-hover: #8A2D06;
-  --primary-light: #FDF0E7;
-  --sand-warm: #F5E6D8;      /* feature band on editorial pages */
-  --sand-warm-hover: #EEDBC8; /* row hover on that band — same family, one step down */
-  --gold: #F8B33D;             /* Accent — highlights, never a text colour on white */
-  --brand-accent: #B23C0B;     /* "Humanity" in the wordmark on light grounds */
-  --gold-soft: #F6DCAE;
+  --primary: #C2410C;
+  --primary-hover: #9A3412;
+  --primary-light: #FFF1E8;
+  --sand-warm: #FFF4EC;      /* feature band on editorial pages */
+  --sand-warm-hover: #FFE8DA; /* row hover on that band — same family, one step down */
+  --gold: #F59E0B;
+             /* Accent — highlights, never a text colour on white */
+  --gold-on-dark: #FFD9A0;
+  --brand-accent: #C2410C;     /* "Humanity" in the wordmark on light grounds */
+  --gold-soft: #FCD9A8;
   
   --emerald: #059669;          /* Trust & Impact Emerald */
   --emerald-hover: #047857;
@@ -56,19 +74,19 @@
   --emerald-border: #A7F3D0;
 
   /* Action CTAs */
-  --cta: #9A3412;              /* Deep Indigo — donate only */
-  --cta-hover: #7C2A0E;
-  --cta-active: #66220B;
+  --cta: #C2410C;
+  --cta-hover: #9A3412;
+  --cta-active: #7C2D12;
   --on-cta: #FFFFFF;
 
   /* Borders & High-Contrast Dividers */
-  --border: #EADFD4;
-  --border-warm: #E0D0C0;
-  --border-strong: #8B6A52;
-  --divider-color: #EDE0D4;
-  --divider-strong: #D3BCA6;
+  --border: #E7E7E5;
+  --border-warm: #EFE2D9;
+  --border-strong: #8A8D92;
+  --divider-color: #EDEDEB;
+  --divider-strong: #DADAD7;
   --hairline-on-dark: rgba(255, 255, 255, 0.2);
-  --focus-ring: #B23C0B;
+  --focus-ring: #C2410C;
 
   /* Responsive Type Scale */
   --fs-display: clamp(2.15rem, 1.5rem + 2.2vw, 3.75rem);
@@ -231,7 +249,7 @@
   font-weight: 700;
   font-size: 0.875rem;
   flex-shrink: 0;
-  border: 1px solid rgba(200, 75, 44, 0.2);
+  border: 1px solid rgba(194, 65, 12, 0.2);
 }
 
 .pull-quote__author-info {
@@ -343,13 +361,13 @@ html:has(body.site-body--editorial) .section {
   scroll-snap-stop: normal;
 }
 .site-body--editorial .site-header {
-  background: rgba(250, 248, 245, 0.98);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   box-shadow: none;
 }
 .site-body--editorial .site-header.is-scrolled {
-  background: rgba(250, 248, 245, 0.98);
+  background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 0 rgba(15, 23, 42, 0.08);
 }
 .site-body--editorial .panel {
@@ -362,9 +380,7 @@ html:has(body.site-body--editorial) .section {
   border-bottom: 0;
 }
 .site-body--editorial .panel--sand {
-  /* Warm sand, deliberately outside the blue family. The hero band is
-     #F4F7FA and the feature panel sits directly under it; another pale blue
-     there was indistinguishable from it. */
+  /* Warm apricot, deliberately distinct from the paper hero and coral band. */
   background: var(--sand-warm);
 }
 
@@ -397,7 +413,7 @@ html:has(body.site-body--editorial) .section {
 .site-body--editorial .page-hero__caption-num { color: var(--primary); }
 .site-body--editorial .page-hero__caption-text { color: var(--slate-700); }
 .site-body--editorial .page-hero__caption-sep {
-  color: var(--border-strong, #8B6A52);
+  color: var(--border-strong, #8A8D92);
 }
 .site-body--editorial .page-hero__signals {
   border-top-color: var(--slate-300);
@@ -555,7 +571,7 @@ p {
   color: var(--slate-700);
   border: 1px solid var(--border);
 }
-.badge--primary { background: var(--primary-light); color: var(--primary); border-color: rgba(200, 75, 44, 0.2); }
+.badge--primary { background: var(--primary-light); color: var(--primary); border-color: rgba(194, 65, 12, 0.2); }
 .badge--emerald { background: var(--emerald-light); color: var(--emerald); border-color: var(--emerald-border); }
 .badge--dark { background: rgba(255, 255, 255, 0.12); color: var(--fg-on-dark); border-color: rgba(255, 255, 255, 0.2); }
 .badge__dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
@@ -677,7 +693,7 @@ p {
   top: 0; left: 0; right: 0;
   z-index: 100;
   height: var(--header-h);
-  background: rgba(250, 248, 245, 0.88);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-warm);
@@ -726,7 +742,7 @@ p {
   width: auto;
   border: 0;
   border-radius: var(--radius-md);
-  background: rgba(250, 248, 245, 0.98);
+  background: rgba(255, 255, 255, 0.98);
   overflow: hidden;
 }
 .brand__logo-img {
@@ -820,7 +836,7 @@ p {
 .menu-toggle[aria-expanded='true'] .menu-toggle__icon i:first-child { transform: translateY(5px) rotate(45deg); }
 .menu-toggle[aria-expanded='true'] .menu-toggle__icon i:last-child { transform: translateY(-5px) rotate(-45deg); }
 
-.mobile-menu { position: fixed; inset: 0; z-index: 99; }
+.mobile-menu { position: fixed; inset: 0; z-index: 110; }
 .mobile-menu[hidden] { display: none; }
 .mobile-menu__backdrop {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -882,7 +898,7 @@ p {
 
 .panel--paper { background: var(--paper); }
 .panel--sand { background: var(--surface-alt); }
-.panel--ink { background: var(--band-deep); color: var(--fg-on-dark); }
+.panel--ink { background: var(--slate-900); color: var(--fg-on-dark); }
 .panel--ink h1, .panel--ink h2, .panel--ink h3 { 
   color: var(--fg-on-dark); 
   letter-spacing: -0.02em;
@@ -1139,9 +1155,8 @@ p {
   font-size: 0.75rem;
 }
 .page-hero__caption-sep {
-  color: var(--border-strong, #8B6A52);
+  color: var(--fg-light);
   font-weight: 300;
-  opacity: 0.6;
   font-size: 0.75rem;
   user-select: none;
 }
@@ -1316,7 +1331,7 @@ p {
   padding-left: var(--space-6);
   border-left: 3px solid var(--primary);
   margin: 0;
-  background: linear-gradient(90deg, rgba(200, 75, 44, 0.04) 0%, transparent 100%);
+  background: linear-gradient(90deg, rgba(194, 65, 12, 0.04) 0%, transparent 100%);
   padding-block: var(--space-4);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
@@ -1586,7 +1601,7 @@ p {
    ============================================================ */
 .impact-band {
   background: var(--band-deep);
-  color: var(--fg-on-dark);
+  color: var(--fg-on-band);
   border-block: 1px solid var(--band-deep-edge);
 }
 
@@ -1605,7 +1620,7 @@ p {
 }
 
 .impact-band__intro h2 {
-  color: var(--fg-on-dark);
+  color: var(--fg-on-band);
   font-size: clamp(1.5rem, 2vw, 2rem);
   line-height: 1.08;
   margin: 0;
@@ -1613,7 +1628,7 @@ p {
 }
 
 .impact-band__intro p {
-  color: var(--fg-muted-on-dark);
+  color: var(--fg-muted-on-band);
   margin: var(--space-2) 0 0;
   max-width: 38ch;
 }
@@ -1650,14 +1665,14 @@ p {
 }
 
 .impact-band__principle strong {
-  color: var(--gold);
+  color: var(--gold-on-dark);
   font-family: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
   font-size: clamp(1rem, 1.4vw, 1.25rem);
   letter-spacing: -0.02em;
 }
 
 .impact-band__principle span {
-  color: var(--fg-muted-on-dark);
+  color: var(--fg-muted-on-band);
   font-size: var(--fs-small);
   line-height: 1.5;
   max-width: 24ch;
@@ -1919,7 +1934,7 @@ p {
   gap: 6px;
   align-items: center;
   padding: 5px 10px;
-  background: rgba(43, 26, 16, 0.68);
+  background: rgba(31, 33, 36, 0.68);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 20px;
@@ -2116,46 +2131,6 @@ p {
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-xs);
 }
-.tab-btn {
-  padding: 0.45rem 1.15rem;
-  border-radius: var(--radius-full);
-  border: 1px solid transparent;
-  background: transparent;
-  font-weight: 600;
-  font-size: var(--fs-small);
-  color: var(--slate-600);
-  cursor: pointer;
-  transition: all var(--dur-standard) var(--ease-out);
-}
-.tab-btn:hover {
-  color: var(--slate-900);
-  background: var(--surface-alt);
-}
-.tab-btn.is-active {
-  background: var(--primary);
-  color: #FFFFFF;
-  border-color: var(--primary);
-}
-.tab-btn[data-category="Clean Water"].is-active {
-  background: var(--primary);
-  color: #FFFFFF;
-  border-color: var(--primary);
-}
-.tab-btn[data-category="Education"].is-active {
-  background: #B45309;
-  color: #FFFFFF;
-  border-color: #B45309;
-}
-.tab-btn[data-category="Emergency Relief"].is-active {
-  background: #B91C1C;
-  color: #FFFFFF;
-  border-color: #B91C1C;
-}
-.tab-btn[data-category="Cooperatives"].is-active {
-  background: #047857;
-  color: #FFFFFF;
-  border-color: #047857;
-}
 @media (min-width: 640px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-7); } }
 
@@ -2215,7 +2190,7 @@ p {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(43, 26, 16, 0.68);
+  background: rgba(31, 33, 36, 0.68);
   backdrop-filter: blur(6px);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -2921,10 +2896,10 @@ p {
    FOOTER — Multi-Column Rich Footer
    ============================================================ */
 .site-footer {
-  background: var(--slate-900);
+  background: var(--footer-bg);
   color: var(--fg-on-dark);
   padding-block: var(--space-7) var(--space-5);
-  border-top: 1px solid var(--slate-800);
+  border-top: 1px solid var(--footer-border);
 }
 .footer-grid {
   display: grid;
@@ -2932,7 +2907,7 @@ p {
 }
 @media (min-width: 880px) {
   .footer-grid {
-    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(0, 1fr));
   }
 }
 .footer-col { display: grid; gap: var(--space-3); align-content: start; }
@@ -2942,7 +2917,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--slate-400);
+  color: var(--footer-heading);
   margin-bottom: var(--space-2);
 }
 .footer-col a {
@@ -2960,8 +2935,8 @@ p {
 .footer-newsletter input {
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
-  border: 1px solid var(--slate-700);
-  background: var(--slate-800);
+  border: 1px solid var(--footer-border);
+  background: var(--footer-surface);
   color: #FFFFFF;
   font-size: var(--fs-small);
   flex: 1;
@@ -2970,6 +2945,9 @@ p {
   outline: none;
   border-color: var(--primary);
 }
+
+.site-footer .btn--primary { background: var(--primary); }
+.site-footer .btn--primary:hover { background: var(--primary-hover); }
 
 .footer-bottom {
   margin-top: var(--space-8);
@@ -3248,15 +3226,11 @@ p {
   border-radius: var(--radius-xs, 2px);
   background: var(--surface-alt);
 }
-/* The source photographs are 4:3. Displaying them at 4:3 crops nothing;
-   the previous 3:2 with a 152px ceiling was discarding 64% of each frame. */
-/* Cropped to 2:1 rather than shown at the source 4:3. Four photographs at
-   full column width will not fit a screen uncropped, and the client chose the
-   wider, larger image over the whole frame. Still far from the 3.7:1 strip
-   this started as. */
+/* Recent-work photographs use their native 4:3 frame so people and supplies
+   stay legible at both desktop and mobile widths. */
 .approach-card__media--event {
-  aspect-ratio: 11 / 5;
-  max-height: 32vh;   /* short viewports crop a little further rather than overflow */
+  aspect-ratio: 4 / 3;
+  max-height: none;
 }
 
 .approach-card__media img {
@@ -3352,15 +3326,122 @@ img.img-pos-lower-middle,
 }
 .approach-photo-caption__sep,
 .rule-card__sep {
-  color: var(--border-strong, #8B6A52);
+  color: var(--fg-light);
   font-weight: 300;
-  opacity: 0.6;
   font-size: 0.75rem;
   user-select: none;
 }
 .approach-photo-caption__text {
   font-weight: 600;
   color: var(--slate-600);
+}
+
+/* ============================================================
+   EVENTS FIELD RECORD — SOURCE-RATIO PHOTO ESSAY
+   The supplied archive mixes portrait and landscape frames. Let each frame
+   keep its editorial weight instead of forcing every photograph into one
+   crop, while the feature cards create a deliberate rhythm across the grid.
+   ============================================================ */
+.field-record__head {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.panel--ink .field-record__head .eyebrow {
+  color: var(--brand-accent-on-dark);
+}
+
+.panel--ink .field-record__head h2 {
+  color: var(--fg-on-dark);
+}
+
+.panel--ink .field-record__head .lead {
+  color: var(--fg-muted-on-dark);
+}
+
+.field-record__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.5vw, 1.25rem);
+  align-items: start;
+}
+
+.field-record__item {
+  min-width: 0;
+  margin: 0;
+}
+
+.field-record__item--feature {
+  grid-column: span 2;
+}
+
+.field-record__media {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.field-record__item--landscape .field-record__media,
+.field-record__item--feature .field-record__media {
+  aspect-ratio: 4 / 3;
+}
+
+.field-record__item--portrait .field-record__media {
+  aspect-ratio: 3 / 4;
+}
+
+.field-record__media picture,
+.field-record__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.field-record__media img {
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.field-record__item:hover .field-record__media img {
+  transform: scale(1.025);
+}
+
+.field-record__caption {
+  display: grid;
+  gap: 0.2rem;
+  padding-top: 0.45rem;
+}
+
+.field-record__chapter {
+  color: var(--brand-accent-on-dark);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.field-record__title {
+  color: var(--fg-on-dark);
+  font-size: clamp(0.8rem, 0.75rem + 0.16vw, 0.95rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+@media (max-width: 639px) {
+  .field-record__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.75rem;
+  }
+
+  .field-record__item--feature {
+    grid-column: span 2;
+  }
+
+  .field-record__title {
+    font-size: 0.78rem;
+  }
 }
 .approach-card__audit-badge {
   position: absolute;
@@ -3693,7 +3774,7 @@ img.img-pos-lower-middle,
 .work-card--featured {
   background: var(--surface);
   border: 2px solid var(--primary);
-  box-shadow: 0 12px 32px -4px rgba(200, 75, 44, 0.15);
+  box-shadow: 0 12px 32px -4px rgba(194, 65, 12, 0.15);
   position: relative;
 }
 @media (min-width: 900px) {
@@ -4018,8 +4099,7 @@ img.img-pos-lower-middle,
   font-family: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
   font-weight: 300;
   font-size: 1.05rem;
-  color: var(--border-strong);
-  opacity: 0.7;
+  color: var(--fg-light);
 }
 
 .bento-area-card__fig {
@@ -4100,7 +4180,7 @@ img.img-pos-lower-middle,
   font-family: 'Public Sans Variable', system-ui, sans-serif;
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--slate-500);
+  color: var(--fg-muted);
   line-height: 1.25;
 }
 
@@ -4916,13 +4996,6 @@ body {
   .filter-tabs {
     width: 100%;
     border-radius: var(--radius-md);
-  }
-
-  .tab-btn {
-    min-height: 2.75rem;
-    flex: 1 1 auto;
-    padding-inline: 0.65rem;
-    font-size: 0.75rem;
   }
 
   .project-card__funding-meta {
@@ -5763,3 +5836,69 @@ main > .hero-fold-group > section.impact-band { border-top-color: var(--band-dee
   min-height: 2.5rem;
   align-items: center;
 }
+
+
+/* ============================================================
+   FOOTER DETAIL COLUMNS
+   These sit after the touch-target block on purpose. That block makes every
+   .footer-col a a 44px inline-flex row, which turned each event into three
+   columns side by side — date, title and city each wrapping to two lines.
+   ============================================================ */
+.footer-blurb {
+  color: var(--fg-muted-on-dark);
+  font-size: 0.9375rem;
+  margin: 0 0 var(--space-2);
+}
+
+.footer-col .footer-email { font-size: 0.9375rem; word-break: break-word; }
+
+.footer-focus,
+.footer-events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+}
+
+.footer-focus li {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.footer-focus strong {
+  color: var(--fg-on-dark);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.footer-focus span {
+  color: var(--fg-muted-on-dark);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+/* A three-line block clears a finger without the 44px row, so it opts out of
+   the inline-flex the shared rule imposes. */
+.footer-col .footer-events a {
+  display: grid;
+  gap: 0.1rem;
+  min-height: 0;
+  padding-block: 0.3rem;
+  align-items: start;
+}
+
+.footer-events time {
+  color: var(--brand-accent-on-dark);
+  font-family: 'Montserrat Variable', 'Montserrat', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.footer-events__title { color: var(--fg-on-dark); font-size: 0.9375rem; line-height: 1.3; }
+.footer-events__where { color: var(--fg-muted-on-dark); font-size: 0.8125rem; }
+
+/* 44px per row stacked five links into a 336px column of mostly air. 32px
+   still clears the 24px minimum and lets the four columns read as a set. */
+.footer-col a { padding-block: 0.35rem; min-height: 2rem; }

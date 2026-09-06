@@ -7,7 +7,11 @@ import JoinDialog from '../components/events/JoinDialog.astro';
 import { getEvents, periodLabel } from '../lib/events';
 import {
   communitySupportWide, communityDistributionWide,
-  healthSupplies, partnerShowcase
+  healthSupplies, partnerShowcase,
+  communityOutdoorPartners, communityRecognition, communityRoundtable,
+  lionsClubGathering, reliefShipmentLoading, reliefShipmentRamp,
+  reliefPallets, communityMeal, partnerPortrait, immunizationPartners,
+  communityMealTwo, communityRecognitionEvent, heritageMonthEvent, communityTeam
 } from '../assets/images/eps';
 import schoolKits from '../assets/images/h2.jpg';
 
@@ -19,22 +23,68 @@ const { upcoming, past } = await getEvents();
 const gallery = [
   { image: communityDistributionWide, title: 'Community distribution days',
     alt: 'Volunteers and community members at an indoor distribution of donated goods.',
-    body: 'Household kits prepared and shared with families across the neighborhood.' },
+    body: 'Household kits prepared and shared with families across the neighborhood.', mediaClass: '' },
   { image: schoolKits, title: 'School and learning kits',
     alt: 'Backpacks packed with school supplies, stacked and ready to hand out.',
-    body: 'Books, supplies and everyday essentials handed to children before term starts.' },
+    body: 'Books, supplies and everyday essentials handed to children before term starts.', mediaClass: '' },
   { image: healthSupplies, title: 'Health and hygiene supplies',
     alt: 'Health, wellness and essential supplies arranged for community distribution.',
-    body: 'Health and hygiene goods gathered for community health events.' },
+    body: 'Health and hygiene goods gathered for community health events.', mediaClass: '' },
   { image: partnerShowcase, title: 'Partner supply drives',
     alt: 'Partners and volunteers behind a relief supply table.',
-    body: 'Businesses and community partners contributing goods at scale.' }
+    body: 'Businesses and community partners contributing goods at scale.', mediaClass: '' }
+];
+
+const fieldArchive = [
+  { image: communityRoundtable, title: 'Community roundtable', chapter: 'Listen first', orientation: 'feature',
+    alt: 'A large group of adults seated around a dinner table during a community gathering.',
+    body: 'A community gathering around one table.', mediaClass: '' },
+  { image: communityOutdoorPartners, title: 'Community partners outdoors', chapter: 'Keep it local', orientation: 'portrait',
+    alt: 'Two community partners standing together outside a public gathering.',
+    body: 'People and partners meeting in the field.', mediaClass: 'img-pos-top' },
+  { image: communityRecognition, title: 'Recognition and partnership', chapter: 'Build trust', orientation: 'portrait',
+    alt: 'Four adults standing with a certificate in front of red paper-crane artwork.',
+    body: 'A recognition moment shared by community partners.', mediaClass: 'img-pos-top' },
+  { image: lionsClubGathering, title: 'Partner gathering', chapter: 'Build trust', orientation: 'landscape',
+    alt: 'Community partners gathered beneath a Lions Club banner.',
+    body: 'Partners making time to connect and coordinate.', mediaClass: '' },
+  { image: reliefShipmentLoading, title: 'Shipment loading', chapter: 'Prepare with care', orientation: 'portrait',
+    alt: 'A worker in a safety vest moving a pallet of boxed supplies into a delivery truck.',
+    body: 'Palletized supplies prepared for transport.', mediaClass: '' },
+  { image: reliefShipmentRamp, title: 'Shipment handoff', chapter: 'Prepare with care', orientation: 'portrait',
+    alt: 'Pallets of boxed supplies at the back of a delivery truck.',
+    body: 'A supply handoff at the loading ramp.', mediaClass: '' },
+  { image: reliefPallets, title: 'Prepared pallets', chapter: 'Prepare with care', orientation: 'landscape',
+    alt: 'Pallets of boxed supplies staged outside a building beside a delivery truck.',
+    body: 'Goods staged before they move into the community.', mediaClass: '' },
+  { image: communityMeal, title: 'Community meal', chapter: 'Share with dignity', orientation: 'landscape',
+    alt: 'Community members gathered around a table during a shared meal.',
+    body: 'Relationships grow through shared time together.', mediaClass: '' },
+  { image: communityRecognitionEvent, title: 'Community recognition', chapter: 'Build trust', orientation: 'feature',
+    alt: 'A group of people posing at a community recognition event.',
+    body: 'A recognition moment with volunteers and partners.', mediaClass: '' },
+  { image: partnerPortrait, title: 'Partner portrait', chapter: 'Build trust', orientation: 'portrait',
+    alt: 'Three community partners standing together indoors at a public gathering.',
+    body: 'A partner conversation captured between events.', mediaClass: 'img-pos-top' },
+  { image: immunizationPartners, title: 'Immunization partnership', chapter: 'Build trust', orientation: 'landscape',
+    alt: 'Three partners standing in front of an Immunization Partnership event backdrop.',
+    body: 'Partners showing up together at a public event.', mediaClass: '' },
+  { image: communityMealTwo, title: 'Shared table', chapter: 'Share with dignity', orientation: 'landscape',
+    alt: 'Community members gathered for a meal around a restaurant table.',
+    body: 'A shared meal and a room full of conversation.', mediaClass: '' },
+  { image: heritageMonthEvent, title: 'Heritage month gathering', chapter: 'Build trust', orientation: 'landscape',
+    alt: 'Three people standing in front of a display for Asian American Pacific Islander Heritage Month.',
+    body: 'Partners gathered during a heritage-month event.', mediaClass: '' },
+  { image: communityTeam, title: 'Community team', chapter: 'Keep it local', orientation: 'portrait',
+    alt: 'Community partners standing together at an indoor gathering.',
+    body: 'The people who keep the network connected.', mediaClass: 'img-pos-top' },
 ];
 
 const sections = [
   { id: 'top', label: 'Events' },
   { id: 'upcoming', label: 'What is next' },
-  { id: 'recent', label: 'Recent work' }
+  { id: 'recent', label: 'Recent work' },
+  { id: 'field-record', label: 'Field record' }
 ];
 
 const heroSignals = [
@@ -53,15 +103,12 @@ const heroSignals = [
   image={communitySupportWide}
   imageAlt="Volunteers coordinating support at a community distribution event."
   caption="Donated goods prepared for a community distribution event."
-  secondaryLabel=""
   heroSignals={heroSignals}
-  nextHref="/vision/"
-  nextLabel="Read our vision"
   sections={sections}
-  total={3}
+  total={4}
 >
   <!-- 02: Upcoming -->
-  <Panel id="upcoming" ground="sand" index={2} total={3} label="What is next"
+  <Panel id="upcoming" ground="sand" index={2} total={4} label="What is next"
     labelledby="upcoming-title" width="wide" nextId="recent" nextLabel="Recent work">
     <div class="panel-head panel-head--split">
       <div class="panel-head__title">
@@ -100,8 +147,8 @@ const heroSignals = [
   </Panel>
 
   <!-- 03: Recent work -->
-  <Panel id="recent" ground="paper" index={3} total={3} label="Recent work"
-    labelledby="recent-title" ctaHref="/vision/" ctaLabel="Read our vision">
+  <Panel id="recent" ground="paper" index={3} total={4} label="Recent work"
+    labelledby="recent-title" nextId="field-record" nextLabel="Field record">
     <div class="panel-head panel-head--split">
       <div class="panel-head__title">
         <p class="eyebrow reveal">Recent work</p>
@@ -118,7 +165,7 @@ const heroSignals = [
       {gallery.map((g) => (
         <article class="approach-card">
           <div class="approach-card__media approach-card__media--event">
-            <Picture src={g.image} widths={[600, 900, 1200]}
+            <Picture src={g.image} class={g.mediaClass} widths={[600, 900, 1200]}
               sizes="(min-width: 860px) 44vw, 92vw"
               formats={['avif', 'webp']} fallbackFormat="jpeg" quality={82}
               alt={g.alt} loading="lazy" decoding="async" />
@@ -128,6 +175,37 @@ const heroSignals = [
             <p class="approach-card__body">{g.body}</p>
           </div>
         </article>
+      ))}
+    </div>
+  </Panel>
+
+  <!-- 04: Field record -->
+  <Panel id="field-record" ground="ink" index={4} total={4} label="Field record"
+    labelledby="field-record-title" ctaHref="/vision/" ctaLabel="Read our vision">
+    <div class="panel-head panel-head--split field-record__head">
+      <div class="panel-head__title">
+        <p class="eyebrow reveal">Field record</p>
+        <h2 class="reveal" style="--i:1" id="field-record-title">The work is made of many small rooms.</h2>
+      </div>
+      <p class="lead reveal" style="--i:2">
+        A fuller record of the people, partnerships, preparation, and shared time behind each community handoff.
+      </p>
+    </div>
+
+    <div class="field-record__grid reveal" style="--i:3" aria-label="Field photographs from Hands Across Humanity">
+      {fieldArchive.map((photo) => (
+        <figure class:list={['field-record__item', `field-record__item--${photo.orientation}`]}>
+          <div class="field-record__media">
+            <Picture src={photo.image} class={photo.mediaClass} widths={[480, 720, 960]}
+              sizes="(min-width: 1100px) 23vw, (min-width: 640px) 31vw, 46vw"
+              formats={['avif', 'webp']} fallbackFormat="jpeg" quality={82}
+              alt={photo.alt} loading="lazy" decoding="async" />
+          </div>
+          <figcaption class="field-record__caption">
+            <span class="field-record__chapter">{photo.chapter}</span>
+            <span class="field-record__title">{photo.title}</span>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </Panel>

@@ -2,7 +2,7 @@
 import { formatDate, locationLabel, mapUrl, type EventRow } from '../../lib/events';
 
 interface Props { events: EventRow[]; }
-const { events } = Astro.props;
+const { events }: Props = Astro.props;
 ---
 
 <div class="events-table-wrap">

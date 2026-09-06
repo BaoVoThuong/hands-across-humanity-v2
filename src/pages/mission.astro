@@ -75,12 +75,8 @@ const ruleCards = [
   image={reliefDistributionWide}
   imageAlt="Volunteers and community members coordinating relief distribution in a large public hall."
   caption="Saving lives and restoring hope, one delivery at a time."
-  secondaryHref="/what-we-do/"
-  secondaryLabel="See the work"
   heroSignals={heroSignals}
   quote="“A clear mission turns good intentions into practical support.”"
-  nextHref="/what-we-do/"
-  nextLabel="See what we do"
   sections={sections}
   total={3}
 >
@@ -146,7 +142,7 @@ const ruleCards = [
     
     <div class="principles">
       {ruleCards.map((rule, idx) => (
-        <article class="rule-card reveal" style={`--i:${idx + 2}`}>
+        <figure class="rule-card reveal" style={`--i:${idx + 2}`}>
           <div class="rule-card__media">
             <Picture
               src={rule.image}
@@ -171,7 +167,7 @@ const ruleCards = [
               </a>
             </div>
           </div>
-        </article>
+        </figure>
       ))}
     </div>
 

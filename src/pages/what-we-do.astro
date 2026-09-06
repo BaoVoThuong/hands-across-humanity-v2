@@ -11,6 +11,7 @@ import {
   educationRelief,
   supplyStaging,
 } from '../assets/images/eps';
+import { FOCUS_AREAS } from '../lib/pages';
 
 const sections = [
   { id: 'top', label: 'What we do' },
@@ -19,20 +20,7 @@ const sections = [
   { id: 'habits', label: 'How we work' }
 ];
 
-const heroSignals = [
-  {
-    title: 'Education and family',
-    text: 'School kits and child-focused goods support learning and readiness.',
-  },
-  {
-    title: 'Health and household',
-    text: 'Everyday essentials help make difficult moments more manageable.',
-  },
-  {
-    title: 'Community care',
-    text: 'Welcoming distribution brings useful goods closer to the people who need them.',
-  },
-];
+const heroSignals = FOCUS_AREAS;
 
 const workAreas = [
   {
@@ -107,12 +95,8 @@ const workAreas = [
   image={educationRelief}
   imageAlt="Children holding prepared school and relief kits with community volunteers."
   caption="Education essentials prepared for children and families."
-  secondaryHref="/mission/"
-  secondaryLabel="Read the mission"
   heroSignals={heroSignals}
   quote="“Useful goods become support when people prepare and share them together.”"
-  nextHref="/events/"
-  nextLabel="See upcoming events"
   sections={sections}
   total={4}
 >

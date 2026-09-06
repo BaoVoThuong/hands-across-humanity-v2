@@ -2,6 +2,7 @@
 import { Picture } from 'astro:assets';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import Panel from '../components/Panel.astro';
+import { pageOf, nextPage, previousPage } from '../lib/pages';
 
 interface RailItem { id: string; label: string; }
 interface SignalItem { title: string; text: string; }
@@ -14,10 +15,6 @@ interface Props {
   image: ImageMetadata;
   imageAlt: string;
   caption: string;
-  nextHref: string;
-  nextLabel: string;
-  secondaryHref?: string;
-  secondaryLabel?: string;
   heroSignals?: SignalItem[];
   quote?: string;
   sections: RailItem[];
@@ -26,9 +23,7 @@ interface Props {
 
 const {
   title, description, activePage, eyebrow, lead,
-  image, imageAlt, caption, nextHref, nextLabel,
-  secondaryHref = '/what-we-do/',
-  secondaryLabel = 'See the work',
+  image, imageAlt, caption,
   heroSignals = [
     {
       title: 'Local leadership',
@@ -44,14 +39,22 @@ const {
     },
   ],
   quote, sections, total
-} = Astro.props;
+}: Props = Astro.props;
+
+/* The chain used to be retyped on every page, so it drifted: Mission pointed
+   forward twice under two names, Events had no way back, and Vision offered
+   the same link with the same words in two places. Both ends now come from
+   the reading order in one place, and cannot disagree with the nav. */
+const here = pageOf(activePage);
+const next = nextPage(activePage);
+const previous = previousPage(activePage);
 
 const onThisPage = sections.slice(1);
 const firstSection = onThisPage[0];
 ---
 
 <SiteLayout
-  title={`${title} | Hands Across Humanity`}
+  title={here?.documentTitle ?? title}
   description={description}
   activePage={activePage}
 >
@@ -70,8 +73,8 @@ const firstSection = onThisPage[0];
                 {firstSection.label}<span class="btn__arrow" aria-hidden="true">↓</span>
               </a>
             )}
-            {secondaryLabel && (
-              <a class="btn btn--secondary" href={secondaryHref}>{secondaryLabel}</a>
+            {previous && (
+              <a class="btn btn--secondary" href={previous.href}>Back to {previous.name}</a>
             )}
           </div>
 
@@ -118,8 +121,8 @@ const firstSection = onThisPage[0];
         
         <div class="chapter-transition__footer">
           <span class="chapter-transition__meta">Next Chapter</span>
-          <h2 class="chapter-transition__title">{nextLabel}</h2>
-          <a class="btn btn--primary chapter-transition__btn" href={nextHref}>
+          <h2 class="chapter-transition__title">{next.cta}</h2>
+          <a class="btn btn--primary chapter-transition__btn" href={next.href}>
             Read Chapter <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
         </div>

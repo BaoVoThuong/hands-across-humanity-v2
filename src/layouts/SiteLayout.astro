@@ -3,7 +3,10 @@ import '@fontsource-variable/montserrat';
 import '@fontsource-variable/public-sans';
 import '../styles/global.css';
 import BackToTop from '../components/ui/BackToTop.astro';
-import logoImage from '../assets/images/Logo.svg';
+import { Image } from 'astro:assets';
+import logoMark from '../assets/images/logo-mark.png';
+import { PAGES, SITE_NAME, CONTACT_EMAIL, FOCUS_AREAS } from '../lib/pages';
+import { getEvents, formatDate, locationLabel } from '../lib/events';
 
 interface Props {
   title: string;
@@ -13,12 +16,13 @@ interface Props {
 
 const { title, description, activePage = '' } = Astro.props;
 
-const navItems = [
-  { href: '/mission/', label: 'Mission', key: 'mission' },
-  { href: '/what-we-do/', label: 'What We Do', key: 'what-we-do' },
-  { href: '/events/', label: 'Events', key: 'events' },
-  { href: '/vision/', label: 'Vision', key: 'vision' }
-];
+/* The footer names the next few events from the same sheet the Events page
+   reads, so it cannot advertise a date that has already passed. When nothing
+   is scheduled the column says so rather than rendering an empty list. */
+const { upcoming } = await getEvents();
+const footerEvents = upcoming.slice(0, 3);
+
+
 
 ---
 
@@ -28,7 +32,7 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="theme-color" content="#FFFCF9" />
     <meta name="color-scheme" content="light" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hands Across Humanity" />
@@ -46,7 +50,7 @@ const navItems = [
   <body class:list={{ 'site-body--editorial': Boolean(activePage) }}>
     <!--
     THESIS: High-impact commercial humanitarian platform with elevated visual hierarchy, structured proof points, interactive impact controls, rich project cards, and clean typography.
-    OWN-WORLD: Palette: White ground (#FFFFFF), brand navy (#12284C), signal blue (#0060AE), deep indigo donate fill (#160042), gold accent (#F8B33D). Typography: Montserrat + Public Sans.
+    OWN-WORLD: Palette: warm paper, sunset apricot, coral clay, and cocoa ink. Typography: Montserrat + Public Sans.
     STORY: Visitors instantly grasp the mission, explore active field projects, view field stories & proof points, and follow the work through prominent CTAs.
     FIRST VIEWPORT: Split hero with bold headline, action CTAs, real-time live field badge overlay, and stats bar.
     FORM: Form 4 candidate, seed bd589f42.
@@ -58,21 +62,20 @@ const navItems = [
     <!-- Header / Masthead -->
     <header class="site-header" data-header>
       <div class="container site-header__inner">
-        <a class="brand" href="/" aria-label="Hands Across Humanity — home">
+        <a class="brand" href="/about-us/" aria-label="Hands Across Humanity — home">
           <div class="brand__logo-container">
-            <img src={logoImage.src} alt="" width="36" height="32" class="brand__logo-img" />
+            <Image src={logoMark} alt="" width={96} height={76} class="brand__logo-img" loading="eager" />
           </div>
           <span class="brand__name">Hands Across <span>Humanity</span></span>
         </a>
 
         <nav class="desktop-nav" aria-label="Main navigation">
-          <a class:list={{ 'is-active': activePage === 'about-us' }} href="/about-us/" aria-current={activePage === 'about-us' ? 'page' : undefined}>About Us</a>
-          {navItems.map((item) => (
+          {PAGES.map((item) => (
             <a
               class:list={{ 'is-active': activePage === item.key }}
               href={item.href}
               aria-current={activePage === item.key ? 'page' : undefined}
-            >{item.label}</a>
+            >{item.name}</a>
           ))}
         </nav>
 
@@ -90,12 +93,12 @@ const navItems = [
       <button class="mobile-menu__backdrop" type="button" tabindex="-1" aria-label="Close menu"></button>
       <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Main menu">
         <nav aria-label="Mobile Navigation">
-          <a class:list={{ 'is-active': activePage === 'about-us' }} href="/about-us/" aria-current={activePage === 'about-us' ? 'page' : undefined}>About Us</a>
-          {navItems.map((item) => (
+          {PAGES.map((item) => (
             <a
               class:list={{ 'is-active': activePage === item.key }}
               href={item.href}
-            >{item.label}</a>
+              aria-current={activePage === item.key ? 'page' : undefined}
+            >{item.name}</a>
           ))}
         </nav>
       </div>
@@ -111,46 +114,58 @@ const navItems = [
     <footer class="site-footer" id="footer">
       <div class="container">
         <div class="footer-grid">
-          <div class="footer-col" style="max-width: 32ch;">
-            <a class="brand" href="/" style="margin-bottom: 0.5rem;" aria-label="Hands Across Humanity — home">
+          <div class="footer-col footer-col--brand">
+            <a class="brand" href="/about-us/" style="margin-bottom: 0.5rem;" aria-label={`${SITE_NAME} — home`}>
               <div class="brand__logo-container">
-                <img src={logoImage.src} alt="" width="36" height="32" class="brand__logo-img" />
+                <Image src={logoMark} alt="" width={48} height={38} class="brand__logo-img" />
               </div>
-              <span class="brand__name" style="color: #FFFFFF;">Hands Across <span style="color: #E09B78;">Humanity</span></span>
+              <span class="brand__name" style="color: #FFFFFF;">Hands Across <span style="color: var(--brand-accent-on-dark);">Humanity</span></span>
             </a>
-            <p style="color: var(--fg-muted-on-dark); font-size: 0.9375rem;">We connect practical donations with trusted community partners so support can be shared with dignity.</p>
+            <p class="footer-blurb">We connect practical donations with trusted community partners so support can be shared with dignity.</p>
+            <h4>Get in touch</h4>
+            <a class="footer-email" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
 
           <div class="footer-col">
             <h4>Organization</h4>
-            <a href="/about-us/">About Us</a>
-            <a href="/mission/">Our Mission</a>
-            <a href="/what-we-do/">What We Do</a>
-            <a href="/events/">Events</a>
-            <a href="/vision/">Vision & Values</a>
+            {PAGES.map((item) => <a href={item.href}>{item.name}</a>)}
           </div>
 
           <div class="footer-col">
-            <h4>Get involved</h4>
-            <a href="/what-we-do/">See donation activities</a>
-            <a href="/events/">Join an activity</a>
-            <a href="/vision/">Partner with the network</a>
-            <a href="/about-us/">Meet the network</a>
+            <h4>What we share</h4>
+            <ul class="footer-focus">
+              {FOCUS_AREAS.map((area) => (
+                <li>
+                  <strong>{area.title}</strong>
+                  <span>{area.text}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div class="footer-col">
-            <h4>Stay Connected</h4>
-            <p style="color: var(--fg-muted-on-dark); font-size: 0.875rem;">Receive occasional updates about community support and ways to help.</p>
-            <form class="footer-newsletter" onsubmit="event.preventDefault(); alert('Thank you for staying connected with Hands Across Humanity.');">
-              <input type="email" placeholder="Enter your email address" required aria-label="Email address for field updates" />
-              <button type="submit" class="btn btn--primary" style="min-height: auto; padding: 0.6rem 1.25rem;">Subscribe</button>
-            </form>
+            <h4>Next events</h4>
+            {footerEvents.length > 0 ? (
+              <ul class="footer-events">
+                {footerEvents.map((e) => (
+                  <li>
+                    <a href="/events/">
+                      <time datetime={e.date}>{formatDate(e.date).full}</time>
+                      <span class="footer-events__title">{e.title}</span>
+                      {locationLabel(e) && <span class="footer-events__where">{locationLabel(e)}</span>}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="footer-blurb">Nothing on the calendar right now. Past activities are on the Events page.</p>
+            )}
+            <a href="/events/">See all events</a>
           </div>
         </div>
 
         <div class="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Hands Across Humanity. Registered 501(c)(3) Public Charity.</p>
-          <p>Community updates · Clear accountability · Privacy Policy</p>
+          <p>&copy; {new Date().getFullYear()} {SITE_NAME}. Community donation network.</p>
         </div>
       </div>
     </footer>
